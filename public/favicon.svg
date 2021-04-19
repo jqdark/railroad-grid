@@ -1,0 +1,5 @@
+<svg width="24" height="24" viewBox="18 18 12 12" xmlns="http://www.w3.org/2000/svg">
+    <path fill="seagreen" d="M17.5 17.5 L30.5 17.5 L30.5 30.5 L17.5 30.5 Z" />
+    <path fill="darkgreen" d="M17.5 17.5 L24 24 L17.5 30.5 Z" />
+    <path fill="mediumseagreen" d="M30.5 17.5 L24 24 L30.5 30.5 Z" />
+</svg>

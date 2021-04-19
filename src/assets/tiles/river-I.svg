@@ -1,0 +1,5 @@
+<svg width="200" height="200" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#2a5cb5" stroke="#de8940" stroke-width="2" d="M18 -4 L18 0 C18 2, 18 6, 24 12 C30 18, 30 22, 30 24 C30 26, 30 30, 24 36 C18 42, 18 46, 18 48 L18 52 L30 52 C30 46, 30 42, 36 36 C42 30, 42 26, 42 24 C42 22, 42 18, 36 12 C30 6, 30 2, 30 0 L30 -4 Z" />
+    <path fill="transparent" stroke="#607a31" stroke-width="1.5" d="M17 -4 L17 0 C17 2, 17 6, 23 12 C29 18, 29 22, 29 24 C29 26, 29 30, 23 36 C17 42, 17 46, 17 48 L17 52" />
+    <path fill="transparent" stroke="#607a31" stroke-width="1.5" d="M31 52 C31 46, 31 42, 37 36 C43 30, 43 26, 43 24 C43 22, 43 18, 37 12 C31 6, 31 2, 31 0 L31 -4" />
+</svg>

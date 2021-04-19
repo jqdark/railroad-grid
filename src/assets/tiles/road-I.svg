@@ -1,0 +1,4 @@
+<svg width="200" height="200" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#404040" d="M18 48 L18 0 L30 0 L30 48 Z" />
+    <path stroke="white" stroke-linecap="butt" stroke-dasharray="4.6,5" stroke-dashoffset="-2.5" fill="transparent" d="M24 48 L24 0" />
+</svg>

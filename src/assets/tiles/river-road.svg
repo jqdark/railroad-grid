@@ -1,0 +1,15 @@
+<svg width="200" height="200" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+    <mask id="remove-bridge">
+        <rect fill="white" width="48" height="48" />
+        <path fill="black" d="M48 16 L0 16 L0 32 L48 32 Z" />
+    </mask>
+    <g mask="url(#remove-bridge)">
+        <path fill="#2a5cb5" stroke="#de8940" stroke-width="2" d="M18 -4 L18 52 L30 52 L30 -4 Z" />
+        <path fill="transparent" stroke="#607a31" stroke-width="1.5" d="M17 -4 L17 52" />
+        <path fill="transparent" stroke="#607a31" stroke-width="1.5" d="M31 -4 L31 52" />
+    </g>
+    <path fill="#404040" d="M48 18 L0 18 L0 30 L48 30 Z" />
+    <path stroke="white" stroke-linecap="butt" stroke-dasharray="4.6,5" stroke-dashoffset="-2.5" fill="transparent" d="M48 24 L0 24" />
+    <path stroke="black" stroke-linecap="round" fill="transparent" d="M7 15 L8 16 L40 16 L41 15" />
+    <path stroke="black" stroke-linecap="round" fill="transparent" d="M7 33 L8 32 L40 32 L41 33" />
+</svg>

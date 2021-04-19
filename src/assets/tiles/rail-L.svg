@@ -1,0 +1,12 @@
+<svg width="200" height="200" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <path id="rail-slat" stroke="brown" stroke-linecap="butt" stroke-width="12" fill="transparent" d="M-1 0 L1 0" />
+    </defs>
+    <path stroke="brown" stroke-linecap="butt" stroke-dasharray="2,4" stroke-dashoffset="-2" stroke-width="12" fill="transparent" d="M24 0 L24 12" />
+    <path stroke="brown" stroke-linecap="butt" stroke-dasharray="2,4" stroke-dashoffset="-2" stroke-width="12" fill="transparent" d="M36 24 L48 24" />
+    <use transform="translate(24.2, 15.2) rotate(70)" xlink:href="#rail-slat" />
+    <use transform="translate(27, 21) rotate(45)" xlink:href="#rail-slat" />
+    <use transform="translate(32.8, 23.8) rotate(20)" xlink:href="#rail-slat" />
+    <path stroke="gray" stroke-linecap="butt" stroke-width="1.5" fill="transparent" d="M20.5 0 L20.5 12 Q20.5 27.5 36 27.5 L48 27.5" />
+    <path stroke="gray" stroke-linecap="butt" stroke-width="1.5" fill="transparent" d="M27.5 0 L27.5 12 Q27.5 20.5 36 20.5 L48 20.5" />
+</svg>

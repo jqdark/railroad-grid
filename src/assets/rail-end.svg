@@ -1,0 +1,6 @@
+<svg width="200" height="100" viewBox="0 0 48 24" xmlns="http://www.w3.org/2000/svg">
+    <path stroke="brown" stroke-linecap="butt" stroke-dasharray="2,4" stroke-dashoffset="-2" stroke-width="12" fill="transparent" d="M24 0 L24 22" />
+    <path stroke="gray" stroke-linecap="butt" stroke-width="1.5" fill="transparent" d="M20.5 0 L20.5 22" />
+    <path stroke="gray" stroke-linecap="butt" stroke-width="1.5" fill="transparent" d="M27.5 0 L27.5 22" />
+    <path stroke="black" stroke-linecap="round" fill="transparent" d="M14 21 L15 22 L33 22 L34 21" />
+</svg>
