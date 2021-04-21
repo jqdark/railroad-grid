@@ -242,40 +242,48 @@ export default {
             "updateDrag"
         ]),
         mouseMove(event) {
-            this.updateDrag({
-                x: event.pageX,
-                y: event.pageY
-            });
+            if (this.drag) {
+                this.updateDrag({
+                    x: event.pageX,
+                    y: event.pageY
+                });
+            }
         },
         keyPress(event) {
-            if (event.key == "q") {
-                this.rotate(-1);
-            } else if (event.key == "e") {
-                this.rotate(1);
+            if (this.drag) {
+                if (event.key == "q") {
+                    this.rotate(-1);
+                } else if (event.key == "e") {
+                    this.rotate(1);
+                }
             }
         },
         touchMove(event) {
-            if (event.touches.length == 1) {
-                event.preventDefault();
-                this.updateDrag({
-                    x: event.touches[0].pageX,
-                    y: event.touches[0].pageY
-                });
-            } else {
-                this.endDrag();
+            if (this.drag) {
+                if (event.touches.length == 1) {
+                    event.preventDefault();
+                    this.updateDrag({
+                        x: event.touches[0].pageX,
+                        y: event.touches[0].pageY
+                    });
+                } else {
+                    this.endDrag();
+                }
             }
         },
         touchEnd(event) {
-            if (
-                (event.touches.length == 0) &&
-                (event.changedTouches.length == 1)
-            ) {
-                document.elementFromPoint(
-                    event.changedTouches[0].pageX,
-                    event.changedTouches[0].pageY
-                )?.dispatchEvent?.(new Event("tiledrop"));
+            if (this.drag) {
+                if (
+                    (event.touches.length == 0) &&
+                    (event.changedTouches.length == 1)
+                ) {
+                    document.elementFromPoint(
+                        event.changedTouches[0].pageX,
+                        event.changedTouches[0].pageY
+                    )?.dispatchEvent?.(new Event("tiledrop"));
+                }
+                this.endDrag();
             }
-            this.endDrag();
         }
     }
 }

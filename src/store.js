@@ -15,18 +15,14 @@ export default new Vuex.Store({
             state.drag = drag;
         },
         updateDrag(state, { x, y }) {
-            if (state.drag) {
-                state.drag.x = x - state.drag.dx;
-                state.drag.y = y - state.drag.dy;
-            }
+            state.drag.x = x - state.drag.dx;
+            state.drag.y = y - state.drag.dy;
         },
         endDrag(state) {
             state.drag = null;
         },
         rotate(state, change) {
-            if (state.drag) {
-                state.drag.rotation += change;
-            }
+            state.drag.rotation += change;
         }
     }
 })

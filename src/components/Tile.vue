@@ -43,16 +43,14 @@ export default {
             "setDrag"
         ]),
         startDrag(drag) {
-            if (this.tile) {
-                this.setDrag({
-                    ...drag,
-                    tile: this.tile,
-                    rotation: this.rotation
-                });
-                if (!this.sourceOf) {
-                    this.tile = null;
-                    this.rotation = 0;
-                }
+            this.setDrag({
+                ...drag,
+                tile: this.tile,
+                rotation: this.rotation
+            });
+            if (!this.sourceOf) {
+                this.tile = null;
+                this.rotation = 0;
             }
         },
         place() {
@@ -62,17 +60,22 @@ export default {
             }
         },
         mouseDown(event) {
-            const dx = event.offsetX;
-            const dy = event.offsetY;
-            this.startDrag({
-                dx, dy,
-                x: event.pageX - dx,
-                y: event.pageY - dy,
-                touch: false
-            });
+            if (this.tile) {
+                const dx = event.offsetX;
+                const dy = event.offsetY;
+                this.startDrag({
+                    dx, dy,
+                    x: event.pageX - dx,
+                    y: event.pageY - dy,
+                    touch: false
+                });
+            }
         },
         touchStart(event) {
-            if (event.touches.length == 1) {
+            if (
+                (event.touches.length == 1) &&
+                this.tile
+            ) {
                 const pageX = event.touches[0].pageX;
                 const pageY = event.touches[0].pageY;
                 const rectangle = this.$el.getBoundingClientRect();
