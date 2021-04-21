@@ -1,5 +1,10 @@
 <template>
-    <div id="app" class="col center" @mousemove="mouseMoved" @mouseup="endDrag" :style="dragStyle">
+    <div id="app" class="col center" :style="dragStyle"
+        @mousemove="mouseMove"
+        @mouseup="endDrag"
+        @touchmove="touchMove"
+        @touchend="touchEnd"
+    >
 
         <div class="row center">
             <div class="row-responsive center">
@@ -185,15 +190,18 @@
         </div>
 
         <div class="instructions row center">
-            <p>
+            <p v-if="hasMouse">
                 Drag and drop to place tiles. Press Q and E while dragging to rotate.
+            </p>
+            <p v-else>
+                Drag and drop to place tiles. Tap placed tiles to rotate.
             </p>
         </div>
 
         <template v-if="drag">
             <div class="drag" :style="{
-                top: (mouseY - drag.dy) + 'px',
-                left: (mouseX - drag.dx) + 'px',
+                left: drag.x + 'px',
+                top: drag.y + 'px',
             }">
                 <Face v-bind="drag" :animate="true" />
             </div>
@@ -214,18 +222,12 @@ export default {
         Tile, Face
     },
     mounted() {
-        window.addEventListener("keydown", this.keyPressed);
-    },
-    data() {
-        return {
-            tiles: Array(81).fill(null),
-            mouseX: 0,
-            mouseY: 0
-        }
+        window.onkeydown = this.keyPress;
     },
     computed: {
         ...mapState([
-            "drag"
+            "drag",
+            "hasMouse"
         ]),
         dragStyle() {
             return {
@@ -236,18 +238,44 @@ export default {
     methods: {
         ...mapMutations([
             "endDrag",
-            "rotate"
+            "rotate",
+            "updateDrag"
         ]),
-        mouseMoved(event) {
-            this.mouseX = event.x;
-            this.mouseY = event.y;
+        mouseMove(event) {
+            this.updateDrag({
+                x: event.pageX,
+                y: event.pageY
+            });
         },
-        keyPressed(event) {
+        keyPress(event) {
             if (event.key == "q") {
                 this.rotate(-1);
             } else if (event.key == "e") {
                 this.rotate(1);
             }
+        },
+        touchMove(event) {
+            if (event.touches.length == 1) {
+                event.preventDefault();
+                this.updateDrag({
+                    x: event.touches[0].pageX,
+                    y: event.touches[0].pageY
+                });
+            } else {
+                this.endDrag();
+            }
+        },
+        touchEnd(event) {
+            if (
+                (event.touches.length == 0) &&
+                (event.changedTouches.length == 1)
+            ) {
+                document.elementFromPoint(
+                    event.changedTouches[0].pageX,
+                    event.changedTouches[0].pageY
+                )?.dispatchEvent?.(new Event("tiledrop"));
+            }
+            this.endDrag();
         }
     }
 }

@@ -12,6 +12,11 @@ Tile placement web app for use with the boardgame [Railroad Ink](https://www.hor
 
 Built using [Vue](https://vuejs.org/) and [Vuex](https://vuex.vuejs.org/).
 
+Features:
+- Simple drag-and-drop interface for tile placement.
+- Responsive layout.
+- Mobile touch support.
+
 ## Setup
 
 Make sure you have [npm](https://www.npmjs.com/package/npm) installed and navigate to the root directory.
@@ -30,7 +35,6 @@ Or build the app for deployment:
 
 ## Planned Improvements
 
-- Mobile touch support.
 - Automatic score and round tracking.
 - Expansion tiles.
 

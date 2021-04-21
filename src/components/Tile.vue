@@ -1,6 +1,12 @@
 <template>
-    <div class="tile" @mouseup="place" @mousedown.prevent="mouseDown" :style="hoverStyle">
-        <Face v-if="tile" :tile="tile" :rotation="rotation" />
+    <div class="tile" :style="hoverStyle"
+        @mouseup="place"
+        @mousedown.prevent="mouseDown"
+        @touchstart="touchStart"
+        @tiledrop="place"
+        @click.prevent="mobileRotate"
+    >
+        <Face v-if="tile" :tile="tile" :rotation="rotation" :animate="!hasMouse" />
     </div>
 </template>
 
@@ -25,7 +31,8 @@ export default {
     },
     computed: {
         ...mapState([
-            "drag"
+            "drag",
+            "hasMouse"
         ]),
         hoverStyle() {
             return this.sourceOf ? {"--tile-hover": "oldlace"} : {};
@@ -33,8 +40,21 @@ export default {
     },
     methods: {
         ...mapMutations([
-            "startDrag"
+            "setDrag"
         ]),
+        startDrag(drag) {
+            if (this.tile) {
+                this.setDrag({
+                    ...drag,
+                    tile: this.tile,
+                    rotation: this.rotation
+                });
+                if (!this.sourceOf) {
+                    this.tile = null;
+                    this.rotation = 0;
+                }
+            }
+        },
         place() {
             if (this.drag && !this.sourceOf) {
                 this.tile = this.drag.tile;
@@ -42,15 +62,36 @@ export default {
             }
         },
         mouseDown(event) {
+            const dx = event.offsetX;
+            const dy = event.offsetY;
             this.startDrag({
-                dx: event.offsetX,
-                dy: event.offsetY,
-                tile: this.tile,
-                rotation: this.rotation
+                dx, dy,
+                x: event.pageX - dx,
+                y: event.pageY - dy,
+                touch: false
             });
-            if (!this.sourceOf) {
-                this.tile = null;
-                this.rotation = 0;
+        },
+        touchStart(event) {
+            if (event.touches.length == 1) {
+                const pageX = event.touches[0].pageX;
+                const pageY = event.touches[0].pageY;
+                const rectangle = this.$el.getBoundingClientRect();
+                this.startDrag({
+                    x: rectangle.left,
+                    y: rectangle.top,
+                    dx: pageX - rectangle.left,
+                    dy: pageY - rectangle.top,
+                    touch: true
+                });
+            }
+        },
+        mobileRotate() {
+            if (
+                !this.hasMouse &&
+                !this.sourceOf &&
+                this.tile
+            ) {
+                this.rotation = (this.rotation + 1) % 4;
             }
         }
     }
@@ -62,7 +103,8 @@ export default {
         width: var(--unit)
         height: var(--unit)
         background-color: oldlace
-        &:hover
-            background-color: var(--tile-hover)
+        @media (hover: hover)
+            &:hover
+                background-color: var(--tile-hover)
 
 </style>

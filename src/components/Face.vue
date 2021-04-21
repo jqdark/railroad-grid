@@ -6,14 +6,14 @@
             transform: 'rotate(' + (90 * rotation) + 'deg)'
         }">
             <img v-if="isString(tile)" :src="getImage(tile)">
-            <template v-else>
+            <template v-else-if="tile">
                 <img v-if="tile.up" :src="getImage(tile.up)" class="up">
                 <img v-if="tile.right" :src="getImage(tile.right)" class="right">
                 <img v-if="tile.down" :src="getImage(tile.down)" class="down">
                 <img v-if="tile.left" :src="getImage(tile.left)" class="left">
             </template>
         </div>
-        <img v-if="!isString(tile)" src="../assets/tiles/station.svg">
+        <img v-if="tile && !isString(tile)" src="../assets/tiles/station.svg">
     </div>
 </template>
 
@@ -29,7 +29,6 @@ export default {
         },
         tile: {
             type: [String, Object],
-            required: true
         },
         animate: {
             type: Boolean,
