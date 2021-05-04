@@ -10,6 +10,8 @@
 
 Tile placement web app for use with the boardgame [Railroad Ink](https://www.horribleguild.com/railroad-ink-deep-blue/).
 
+![Screen capture of the app being used](/examples/demo.gif?raw=true)
+
 Built using [Vue](https://vuejs.org/) and [Vuex](https://vuex.vuejs.org/).
 
 Features:
@@ -40,4 +42,4 @@ Or build the app for deployment:
 
 ## License
 
-Licensed under [MIT](https://github.com/jqdark/railroad-grid/blob/main/LICENSE).
+Licensed under [MIT](/LICENSE).
