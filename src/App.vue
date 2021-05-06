@@ -297,13 +297,13 @@ export default {
 
     // Media queries
     :root
-        --unit: 8vh
+        --unit: calc(8vh - 0.32em)
         @media (max-aspect-ratio: 4/3)
-            --unit: 6vw
+            --unit: calc(6vw  - 0.32em)
         @media (max-aspect-ratio: 1/1)
-            --unit: 6vh
+            --unit: calc(6vh - 0.32em)
         @media (max-aspect-ratio: 3/4)
-            --unit: 8vw
+            --unit: calc(8vw - 0.32em)
 
     // Utility classes
     .col
@@ -409,9 +409,9 @@ export default {
 
     // Instructions
     .instructions
-        margin: 0 50px
+        margin: 0 3em
         margin-top: calc(1/2 * var(--unit))
-        font-size: 20px
+        font-size: 1.5em
         font-family: sans-serif
         font-weight: bold
 
